@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagination in js</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+*{
+    padding: 0%;
+    margin: 0%;
+}
+.body{
+    width: 100px;
+    height: 100px;
+    background: rgb(19, 184, 184);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}  
+.box{
+    background: white;
+    padding: 0%;
+    border-radius: 100px;
+    align-items: center;
+    display: flex;
+    margin-left: 100px;
+    padding: 300px;
+} 
+.box ul{
+    display: flex;
+    margin: 0px 10px;
+}
+.box ul li{
+    list-style: none;
+    margin: 0% 5px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 100px;
+    text-align: center;
+}     
+.box ul li a{
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    border-radius: 50px;
+    transition: 0.2s;
+    
+}  
+.box ul li .activepage{
+    background-color: aqua;
+    color: #000;
+}
+
+.box ul li a:hover,
+.box button a:hover{
+    background-color: aqua;
+    color: #000;
+}   
+.boxbutton{
+    font-size: 20px;
+    font-weight: bold;
+    background-color: aliceblue;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    overflow: hidden;
+} 
+.boxbutton a{
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    color: black;
+    transition: 0.2s;
+}
+
+</style>
+</head>
+<body>
+    <div class="box">
+        
+        <button type="button"><a href="#">prev</a></button>
+       <ul class="ul">
+        <li><a href ="#" class="page number 1">1</a></li>
+        <li><a href ="#" class="page number activepage">2</a></li>
+        <li><a href ="#" class="page number 3">3</a></li>
+        <li><a href ="#" class="page number 4">4</a></li>
+        <li><a href ="#" class="page number 5">5</a></li>
+        
+       </ul>
+
+     <button type="button"><a href="#">next</a></button>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const pageNumbers = document.querySelectorAll('.page.number');
+        
+        
+        prevButton.addEventListener('click', function() {
+             console.log('Previous button clicked');
+            
+        });
+        
+        
+        nextButton.addEventListener('click', function() {
+             console.log('Next button clicked');
+            
+        });
+         pageNumbers.forEach(function(page) {
+            page.addEventListener('click', function(event) {
+                event.preventDefault(); 
+                
+                console.log('Page number clicked:', page.textContent);
+                
+                pageNumbers.forEach(function(p) {
+                    p.classList.remove('activepage');
+                });
+                
+                page.classList.add('activepage');
+            });
+        });
+    });
+    </script>
+    
+</body>
+</html>
